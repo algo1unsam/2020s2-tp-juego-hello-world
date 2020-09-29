@@ -1,8 +1,18 @@
 import wollok.game.*
-import pepita.*
+import tanques.*
 
 program game {
-	game.title("Juego Base")
-	game.addVisual(pepita)
+	// CONFIG	
+	game.title("City battle")
+	game.height(20)
+	game.width(20)
+	game.ground("black.jpg")
+		// VISUAL
+	game.addVisualCharacter(tanquesito)
+	game.addVisual(new Muro())
+	game.addVisual(new Muro())
+	game.addVisual(new Muro())
+	game.addVisual(new Muro())
+		// start
 	game.start()
 }
