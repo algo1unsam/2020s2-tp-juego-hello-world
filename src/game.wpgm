@@ -2,8 +2,7 @@ import wollok.game.*
 import tanques.*
 
 program game {
-	const enemigos = []
-		// CONFIG	
+	// CONFIG	
 	game.title("Guerra de tanquesitos")
 	game.height(25)
 	game.width(40)
@@ -21,8 +20,11 @@ program game {
 	game.addVisual(new Muro())
 	game.addVisual(new Muro())
 	game.addVisual(new Muro())
+		// CONTROLES
+	keyboard.space().onPressDo({ tanquesito.ataque() })
 		// MOV ENEMIGOS
-//	game.onTick(1000, "moverse", enemigos.position())
+	game.onTick(5000, "pium pium", { game.allVisuals().forEach({ t => t.atacar()}) })
+	game.onTick(500, "pium pium 2", { game.allVisuals().forEach({ t => t.realidad()}) })
 		// start
 	game.start()
 }
