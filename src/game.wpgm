@@ -2,17 +2,27 @@ import wollok.game.*
 import tanques.*
 
 program game {
-	// CONFIG	
-	game.title("City battle")
-	game.height(20)
-	game.width(20)
+	const enemigos = []
+		// CONFIG	
+	game.title("Guerra de tanquesitos")
+	game.height(25)
+	game.width(40)
 	game.ground("black.jpg")
 		// VISUAL
 	game.addVisualCharacter(tanquesito)
+	game.addVisual(new TanqueEnemigo())
+	game.addVisual(new TanqueEnemigo())
+	game.addVisual(new TanqueEnemigo())
 	game.addVisual(new Muro())
 	game.addVisual(new Muro())
 	game.addVisual(new Muro())
 	game.addVisual(new Muro())
+	game.addVisual(new Muro())
+	game.addVisual(new Muro())
+	game.addVisual(new Muro())
+	game.addVisual(new Muro())
+		// MOV ENEMIGOS
+//	game.onTick(1000, "moverse", enemigos.position())
 		// start
 	game.start()
 }
