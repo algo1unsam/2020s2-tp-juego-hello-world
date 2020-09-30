@@ -12,6 +12,8 @@ program game {
 	game.addVisual(new TanqueEnemigo())
 	game.addVisual(new TanqueEnemigo())
 	game.addVisual(new TanqueEnemigo())
+	game.addVisual(new TanqueEnemigo())
+	game.addVisual(new TanqueEnemigo())
 	game.addVisual(new Muro())
 	game.addVisual(new Muro())
 	game.addVisual(new Muro())
@@ -21,10 +23,15 @@ program game {
 	game.addVisual(new Muro())
 	game.addVisual(new Muro())
 		// CONTROLES
+	keyboard.up().onPressDo({ tanquesito.cambiarTanque("up") })
+	keyboard.down().onPressDo({ tanquesito.cambiarTanque("down") })
+	keyboard.left().onPressDo({ tanquesito.cambiarTanque("left") })
+	keyboard.right().onPressDo({ tanquesito.cambiarTanque("right") })
 	keyboard.space().onPressDo({ tanquesito.ataque() })
 		// MOV ENEMIGOS
-	game.onTick(5000, "pium pium", { game.allVisuals().forEach({ t => t.atacar()}) })
-	game.onTick(500, "pium pium 2", { game.allVisuals().forEach({ t => t.realidad()}) })
+	game.onTick(5000, "disparo enemigos", { game.allVisuals().forEach({ t => t.atacar()}) })
+	game.onTick(150, "movimiento bala", { game.allVisuals().forEach({ t => t.realidad()}) })
+	game.onTick(2400, "movimiento enemigos", { game.allVisuals().forEach({ t => t.moverse()}) })
 		// start
 	game.start()
 }
