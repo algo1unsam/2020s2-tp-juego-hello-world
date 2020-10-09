@@ -1,5 +1,9 @@
 import wollok.game.*
-import tanques.*
+import tanquesito.*
+import movimientos.*
+import balas.*
+import enemigos.*
+import muros.*
 
 program game {
 	// CONFIG	
@@ -23,15 +27,15 @@ program game {
 	game.addVisual(new Muro())
 	game.addVisual(new Muro())
 		// CONTROLES
-	keyboard.up().onPressDo({ tanquesito.cambiarTanque("up") })
-	keyboard.down().onPressDo({ tanquesito.cambiarTanque("down") })
-	keyboard.left().onPressDo({ tanquesito.cambiarTanque("left") })
-	keyboard.right().onPressDo({ tanquesito.cambiarTanque("right") })
+	keyboard.up().onPressDo({ tanquesito.cambiarTanque(up) })
+	keyboard.down().onPressDo({ tanquesito.cambiarTanque(down) })
+	keyboard.left().onPressDo({ tanquesito.cambiarTanque(left) })
+	keyboard.right().onPressDo({ tanquesito.cambiarTanque(right) })
 	keyboard.space().onPressDo({ tanquesito.ataque() })
-		// MOV ENEMIGOS
-	game.onTick(5000, "disparo enemigos", { game.allVisuals().forEach({ t => t.atacar()}) })
-	game.onTick(150, "movimiento bala", { game.allVisuals().forEach({ t => t.realidad()}) })
-	game.onTick(2400, "movimiento enemigos", { game.allVisuals().forEach({ t => t.moverse()}) })
+		// MOV IA
+	game.onTick(1000, "disparo enemigos", { game.allVisuals().filter({ o => o.identidad() == "enemigo"}).forEach({ t => t.atacar()}) })
+	game.onTick(75, "movimiento bala", { game.allVisuals().filter({ o => o.identidad() == "bala"}).forEach({ t => t.realidad()}) })
+	game.onTick(2000, "movimiento enemigos", { game.allVisuals().filter({ o => o.identidad() == "enemigo"}).forEach({ t => t.moverse()}) })
 		// start
 	game.start()
 }
