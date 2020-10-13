@@ -8,11 +8,12 @@ import muros.*
 program game {
 	// CONFIG	
 	game.title("Guerra de tanquesitos")
-	game.height(25)
-	game.width(40)
+	game.height(10)
+	game.width(10)
 	game.ground("black.jpg")
 		// VISUAL
-	game.addVisualCharacter(tanquesito)
+	game.cellSize(50)
+	game.addVisual(tanquesito)
 	game.addVisual(new TanqueEnemigo())
 	game.addVisual(new TanqueEnemigo())
 	game.addVisual(new TanqueEnemigo())
@@ -35,7 +36,7 @@ program game {
 		// MOV IA
 	game.onTick(1000, "disparo enemigos", { game.allVisuals().filter({ o => o.identidad() == "enemigo"}).forEach({ t => t.atacar()}) })
 	game.onTick(75, "movimiento bala", { game.allVisuals().filter({ o => o.identidad() == "bala"}).forEach({ t => t.realidad()}) })
-	game.onTick(2000, "movimiento enemigos", { game.allVisuals().filter({ o => o.identidad() == "enemigo"}).forEach({ t => t.moverse()}) })
+	game.onTick(2000, "movimiento enemigos", { game.allVisuals().filter({ o => o.identidad() == "enemigo"}).forEach({ t => t.cambiarTanque(t.movimientos().get(t.randomizer(3)))}) })
 		// start
 	game.start()
 }

@@ -3,7 +3,8 @@ import wollok.game.*
 object up {
 
 	method mov(cosa) {
-		return cosa.position().up(1)
+		return if(cosa.position().y()!=game.height()-1) cosa.position().up(1)
+		else cosa.position()
 	}
 
 	method movString() {
@@ -15,7 +16,8 @@ object up {
 object down {
 
 	method mov(cosa) {
-		return cosa.position().down(1)
+		return if(cosa.position().y()!=0) cosa.position().down(1)
+		else cosa.position()
 	}
 
 	method movString() {
@@ -27,7 +29,8 @@ object down {
 object left {
 
 	method mov(cosa) {
-		return cosa.position().left(1)
+		return if(cosa.position().x()!=0) cosa.position().left(1)
+		else cosa.position()
 	}
 
 	method movString() {
@@ -39,7 +42,8 @@ object left {
 object right {
 
 	method mov(cosa) {
-		return cosa.position().right(1)
+		return if(cosa.position().x()!=game.width()-1) cosa.position().right(1)
+		else cosa.position()
 	}
 
 	method movString() {
