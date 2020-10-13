@@ -9,14 +9,13 @@ object tanquesito {
 	var ultimaPosicion = position
 	var ultimoMovimiento = up
 
-	method cambiarTanque(apunta) {
-		image = "tank_" + apunta.movString() + ".png"
-		ultimaPosicion = apunta.mov(self)
+	method cambiarTanque(apunta) {		
 		if (game.getObjectsIn(apunta.mov(self)).isEmpty()) {
 			self.position(apunta.mov(self))
-			
-			ultimoMovimiento = apunta
 		}
+		image = "tank_" + apunta.movString() + ".png"
+		ultimaPosicion = apunta.mov(self)
+		ultimoMovimiento = apunta
 	}
 
 	method identidad() {

@@ -18,9 +18,6 @@ class TanqueEnemigo {
 		if (self.randomizer(10) == 4) game.addVisual(new Bala(position = ultimaPosicion, image = "bala" + image.drop(5), movimiento = ultimoMovimiento))
 	}
 
-	method realidad() {
-	}
-
 //	method moverse() {
 //		if (self.randomizer(3) == 0) {
 //			if(self.position().y()!=game.height()-1){
@@ -60,13 +57,13 @@ class TanqueEnemigo {
 //		}
 //	}
 	
-	method cambiarTanque(apunta) {
-		image = "enemy_" + apunta.movString() + ".png"
-		ultimaPosicion = apunta.mov(self)
+	method cambiarTanque(apunta) {		
 		if (game.getObjectsIn(apunta.mov(self)).isEmpty()) {
 			self.position(apunta.mov(self))			
-			ultimoMovimiento = apunta
 		}
+		image = "enemy_" + apunta.movString() + ".png"
+		ultimaPosicion = apunta.mov(self)
+		ultimoMovimiento = apunta
 	}
 
 	method randomizer(valor) {
