@@ -8,58 +8,19 @@ class TanqueEnemigo {
 	var property image = "enemy_up.png"
 	var ultimoMovimiento = up
 	var ultimaPosicion = position
-	const property movimientos =[up,down,left,right]
+	const property movimientos = [ down, down, up, left, right ] // el primero no lo toma
 
-	method identidad() {
-		return "enemigo"
-	}
+//	method identidad() {
+//		return "enemigo"
+//	}
 
 	method atacar() {
-		if (self.randomizer(10) == 4) game.addVisual(new Bala(position = ultimaPosicion, image = "bala" + image.drop(5), movimiento = ultimoMovimiento))
+		if (self.randomizer(10) == 4) game.addVisual(new BalaEnemigos(position = position, image = "bala" + image.drop(5), movimiento = ultimoMovimiento))
 	}
 
-//	method moverse() {
-//		if (self.randomizer(3) == 0) {
-//			if(self.position().y()!=game.height()-1){
-//				position = self.position().up(1)
-//				ultimaPosicion = self.position().up(1)
-//				ultimoMovimiento = up
-//			}			
-//			image = "enemy_up.png"
-//		} else {
-//			if (self.randomizer(3) == 1) {
-//				if(self.position().y()!=0){
-//					position = self.position().down(1)
-//					ultimaPosicion = self.position().down(1)
-//					ultimoMovimiento = down
-//				}				
-//				image = "enemy_down.png"
-//			} else {
-//				if (self.randomizer(3) == 2) {
-//					if(self.position().x()!=0){
-//						position = self.position().left(1)
-//						ultimaPosicion = self.position().left(1)
-//						ultimoMovimiento = left
-//					}					
-//					image = "enemy_left.png"
-//				} else {
-//					if (self.randomizer(3) == 3) {
-//						if(self.position().x()!=game.width()-1){
-//							position = self.position().right(1)
-//							ultimaPosicion = self.position().right(1)
-//							ultimoMovimiento = right
-//						}						
-//						image = "enemy_right.png"
-//					} else {
-//					}
-//				}
-//			}
-//		}
-//	}
-	
-	method cambiarTanque(apunta) {		
+	method cambiarTanqueE(apunta) {
 		if (game.getObjectsIn(apunta.mov(self)).isEmpty()) {
-			self.position(apunta.mov(self))			
+			self.position(apunta.mov(self))
 		}
 		image = "enemy_" + apunta.movString() + ".png"
 		ultimaPosicion = apunta.mov(self)
@@ -68,6 +29,19 @@ class TanqueEnemigo {
 
 	method randomizer(valor) {
 		return 0.randomUpTo(valor).roundUp()
+	}
+
+	method chocado() {
+		game.removeVisual(self)
+	}
+
+	method chocadoPorEnemigo() {
+	}
+
+	method realidad() {
+	}
+
+	method colisionador() {
 	}
 
 }

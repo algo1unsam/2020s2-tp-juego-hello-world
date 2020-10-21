@@ -5,28 +5,23 @@ import balas.*
 import enemigos.*
 import muros.*
 
+//es que yo por eso hice el identidad, tipo haces un filter y solucionas todo, con esto haces 20 methods vacioos porque si. si pero no quiere que tenga un metodo asi y 
+//dijo que pongamos methods vacios. 0 sentido. claro, concuerdo. es que no hay otra que yo sepa, como son clases no podes referenciarlas por nombre ni nada. 
+//si entra nahuel deciselo
+//
 program game {
 	// CONFIG	
 	game.title("Guerra de tanquesitos")
-	game.height(10)
-	game.width(10)
+	game.height(20)
+	game.width(20)
 	game.ground("black.jpg")
 		// VISUAL
 	game.cellSize(50)
 	game.addVisual(tanquesito)
-	game.addVisual(new TanqueEnemigo())
-	game.addVisual(new TanqueEnemigo())
-	game.addVisual(new TanqueEnemigo())
-	game.addVisual(new TanqueEnemigo())
-	game.addVisual(new TanqueEnemigo())
-	game.addVisual(new Muro())
-	game.addVisual(new Muro())
-	game.addVisual(new Muro())
-	game.addVisual(new Muro())
-	game.addVisual(new Muro())
-	game.addVisual(new Muro())
-	game.addVisual(new Muro())
-	game.addVisual(new Muro())
+//	5.times({ i => game.addVisual(new TanqueEnemigo()) })
+//	100.times({ i => game.addVisual(new Muro()) })
+	10.times({ i => game.addVisual(new TanqueEnemigo()) })
+	10.times({ i => game.addVisual(new Muro()) })
 		// CONTROLES
 	keyboard.up().onPressDo({ tanquesito.cambiarTanque(up) })
 	keyboard.down().onPressDo({ tanquesito.cambiarTanque(down) })
@@ -34,9 +29,12 @@ program game {
 	keyboard.right().onPressDo({ tanquesito.cambiarTanque(right) })
 	keyboard.space().onPressDo({ tanquesito.ataque() })
 		// MOV IA
-	game.onTick(1000, "disparo enemigos", { game.allVisuals().filter({ o => o.identidad() == "enemigo"}).forEach({ t => t.atacar()}) })
-	game.onTick(75, "movimiento bala", { game.allVisuals().filter({ o => o.identidad() == "bala"}).forEach({ t => t.realidad()}) })
-	game.onTick(2000, "movimiento enemigos", { game.allVisuals().filter({ o => o.identidad() == "enemigo"}).forEach({ t => t.cambiarTanque(t.movimientos().get(t.randomizer(3)))}) })
+	game.onTick(1000, "disparo enemigos", { game.allVisuals().forEach({ t => t.atacar()}) })
+	game.onTick(75, "movimiento bala", { game.allVisuals().forEach({ t => t.realidad()})
+		game.allVisuals().forEach({ t => t.colisionador()})
+	})
+//	game.onTick(2000, "movimiento enemigos", { game.allVisuals().forEach({ t => t.cambiarTanqueE(t.movimientos().get(t.randomizer(4)))}) })
+	game.onTick(2000, "movimiento enemigos", { game.allVisuals().forEach({ t => t.cambiarTanqueE(t.movimientos().anyOne())}) })
 		// start
 	game.start()
 }
