@@ -1,5 +1,6 @@
 import wollok.game.*
 import movimientos.*
+import inicio.*
 import balas.*
 
 class TanqueEnemigo {
@@ -10,12 +11,8 @@ class TanqueEnemigo {
 	var ultimaPosicion = position
 	const property movimientos = [ down, down, up, left, right ] // el primero no lo toma
 
-//	method identidad() {
-//		return "enemigo"
-//	}
-
 	method atacar() {
-		if (self.randomizer(10) == 4) game.addVisual(new BalaEnemigos(position = position, image = "bala" + image.drop(5), movimiento = ultimoMovimiento))
+		if (self.randomizer(3) == 2) carga.crearBala(new BalaEnemigos(position = position, image = "bala" + image.drop(5), movimiento = ultimoMovimiento))
 	}
 
 	method cambiarTanqueE(apunta) {
@@ -33,15 +30,14 @@ class TanqueEnemigo {
 
 	method chocado() {
 		game.removeVisual(self)
+		carga.eliminarEnemigo(self)
 	}
 
 	method chocadoPorEnemigo() {
 	}
 
-	method realidad() {
-	}
-
-	method colisionador() {
+	method crear() {
+		game.addVisual(self)
 	}
 
 }

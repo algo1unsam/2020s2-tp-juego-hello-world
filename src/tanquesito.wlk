@@ -1,5 +1,6 @@
 import wollok.game.*
 import movimientos.*
+import inicio.*
 import balas.*
 
 object tanquesito {
@@ -19,14 +20,8 @@ object tanquesito {
 		ultimoMovimiento = apunta
 	}
 
-//	method identidad() {
-//		return "tanquesito"
-//	}
-	method atacar() {
-	}
-
 	method ataque() {
-		game.addVisual(new Bala(position = position, image = "bala" + image.drop(4), movimiento = ultimoMovimiento))
+		carga.crearBala(new Bala(position = position, image = "bala" + image.drop(4), movimiento = ultimoMovimiento))
 	}
 
 	method chocado() {
@@ -36,17 +31,5 @@ object tanquesito {
 		game.removeVisual(self)
 	}
 
-	method realidad() {
-	}
-
-	method colisionador() {
-	}
-
-	method cambiarTanqueE(valor) {
-	}
-
-//	method randomizer(valor) {
-//		const val = valor
-//	}
 }
 

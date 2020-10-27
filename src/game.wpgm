@@ -1,40 +1,23 @@
 import wollok.game.*
-import tanquesito.*
-import movimientos.*
-import balas.*
-import enemigos.*
-import muros.*
+import inicio.*
 
-//es que yo por eso hice el identidad, tipo haces un filter y solucionas todo, con esto haces 20 methods vacioos porque si. si pero no quiere que tenga un metodo asi y 
-//dijo que pongamos methods vacios. 0 sentido. claro, concuerdo. es que no hay otra que yo sepa, como son clases no podes referenciarlas por nombre ni nada. 
-//si entra nahuel deciselo
-//
 program game {
 	// CONFIG	
 	game.title("Guerra de tanquesitos")
 	game.height(20)
 	game.width(20)
 	game.ground("black.jpg")
-		// VISUAL
 	game.cellSize(50)
-	game.addVisual(tanquesito)
-//	5.times({ i => game.addVisual(new TanqueEnemigo()) })
-//	100.times({ i => game.addVisual(new Muro()) })
-	10.times({ i => game.addVisual(new TanqueEnemigo()) })
-	10.times({ i => game.addVisual(new Muro()) })
+		// CREACION 
+	carga.creacion()
 		// CONTROLES
-	keyboard.up().onPressDo({ tanquesito.cambiarTanque(up) })
-	keyboard.down().onPressDo({ tanquesito.cambiarTanque(down) })
-	keyboard.left().onPressDo({ tanquesito.cambiarTanque(left) })
-	keyboard.right().onPressDo({ tanquesito.cambiarTanque(right) })
-	keyboard.space().onPressDo({ tanquesito.ataque() })
-		// MOV IA
-	game.onTick(1000, "disparo enemigos", { game.allVisuals().forEach({ t => t.atacar()}) })
-	game.onTick(75, "movimiento bala", { game.allVisuals().forEach({ t => t.realidad()})
-		game.allVisuals().forEach({ t => t.colisionador()})
-	})
-//	game.onTick(2000, "movimiento enemigos", { game.allVisuals().forEach({ t => t.cambiarTanqueE(t.movimientos().get(t.randomizer(4)))}) })
-	game.onTick(2000, "movimiento enemigos", { game.allVisuals().forEach({ t => t.cambiarTanqueE(t.movimientos().anyOne())}) })
+	carga.controles()
+		// DISPAROS
+	carga.disparoEnemigo()
+		// MOV BALA
+	carga.movimientoBala()
+		// MOV ENEMIGO
+	carga.movimientoEnemigo()
 		// start
 	game.start()
 }

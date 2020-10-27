@@ -7,9 +7,6 @@ class Muro {
 	const property image = "muro.png"
 	const property movimientos = [ down, down, up, left, right ]
 
-//	method identidad() {
-//		return "muro"
-//	}
 	method chocado() {
 		game.removeVisual(self)
 	}
@@ -18,20 +15,9 @@ class Muro {
 		game.removeVisual(self)
 	}
 
-	method atacar() {
+	method crear() {
+		game.addVisual(self)
 	}
 
-	method realidad() {
-	}
-
-	method colisionador() {
-	}
-
-	method cambiarTanqueE(valor) {
-	}
-
-//	method randomizer(valor) {
-//		const val = valor
-//	}
 }
 

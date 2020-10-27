@@ -1,10 +1,9 @@
 import wollok.game.*
 import movimientos.*
+import inicio.*
 import enemigos.*
-import muros.*
 import tanquesito.*
 
-//
 class Bala {
 
 	var property position
@@ -12,15 +11,8 @@ class Bala {
 	const movimiento
 	const property movimientos = [ down, down, up, left, right ]
 
-//
-//	method identidad() {
-//		return "bala"
-//	}
 	method realidad() {
 		position = movimiento.mover(self)
-	}
-
-	method atacar() {
 	}
 
 	method colisionador() {
@@ -32,18 +24,21 @@ class Bala {
 
 	method chocado() {
 		game.removeVisual(self)
+		carga.eliminarBala(self)
 	}
 
 	method chocadoPorEnemigo() {
+		carga.eliminarBala(self)
 		game.removeVisual(self)
 	}
 
 	method cambiarTanqueE(valor) {
 	}
 
-//	method randomizer(valor) {
-//		const val = valor
-//	}
+	method crear() {
+		game.addVisual(self)
+	}
+
 }
 
 class BalaEnemigos inherits Bala {
