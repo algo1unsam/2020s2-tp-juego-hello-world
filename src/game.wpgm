@@ -4,8 +4,8 @@ import inicio.*
 program game {
 	// CONFIG	
 	game.title("Guerra de tanquesitos")
-	game.height(20)
-	game.width(20)
+	game.height(11)
+	game.width(13)
 	game.ground("black.jpg")
 	game.cellSize(50)
 		// CREACION 

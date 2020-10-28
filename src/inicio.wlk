@@ -4,19 +4,22 @@ import movimientos.*
 import balas.*
 import enemigos.*
 import muros.*
+import levels.*
 
 object carga {
 
-	const enemigos = []
-	const muros = []
+	const property enemigos = []
+	const property muros = []
 	const balas = []
 
 	method creacion() {
 		game.addVisual(tanquesito)
-		7.times({ i => enemigos.add(new TanqueEnemigo())})
+		level1.renderEnemies()
 		enemigos.forEach({ e => e.crear()})
-		30.times({ i => muros.add(new Muro())})
+//		30.times({ i => muros.add(new Muro())})
+		level1.renderBlocks()
 		muros.forEach({ e => e.crear()})
+		
 	}
 
 	method controles() {

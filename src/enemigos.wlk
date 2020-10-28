@@ -5,7 +5,7 @@ import balas.*
 
 class TanqueEnemigo {
 
-	var property position = new Position(x = 0.randomUpTo(game.width()), y = 0.randomUpTo(game.height()))
+	var property position
 	var property image = "enemy_up.png"
 	var ultimoMovimiento = up
 	var ultimaPosicion = position
