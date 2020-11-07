@@ -11,13 +11,13 @@ program game {
 		// CREACION 
 	carga.creacion()
 		// CONTROLES
-	carga.controles()
+	//carga.controles()
 		// DISPAROS
-	carga.disparoEnemigo()
+	//carga.disparoEnemigo()
 		// MOV BALA
-	carga.movimientoBala()
+	//carga.movimientoBala()
 		// MOV ENEMIGO
-	carga.movimientoEnemigo()
+	//carga.movimientoEnemigo()
 		// start
 	game.start()
 }

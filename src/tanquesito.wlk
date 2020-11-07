@@ -9,7 +9,7 @@ object tanquesito {
 	var property image = "tank_up.png"
 	var ultimaPosicion = position
 	var ultimoMovimiento = up
-	const property movimientos = [ down, down, up, left, right ]
+	//const property movimientos = [ down, down, up, left, right ]
 
 	method cambiarTanque(apunta) {
 		if (game.getObjectsIn(apunta.mov(self)).isEmpty()) {
@@ -21,8 +21,8 @@ object tanquesito {
 	}
 
 	method ataque() {
-		carga.crearBala(new Bala(position = position, image = "bala" + image.drop(4), movimiento = ultimoMovimiento))
-	}
+		const bala = new Bala(position = ultimaPosicion)
+		bala.disparada(ultimoMovimiento)}
 
 	method chocado() {
 	}

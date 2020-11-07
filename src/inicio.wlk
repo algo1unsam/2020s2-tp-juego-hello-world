@@ -10,7 +10,7 @@ object carga {
 
 	const property enemigos = []
 	const property muros = []
-	const balas = []
+	//const balas = []
 
 	method creacion() {
 		game.addVisual(tanquesito)
@@ -19,6 +19,7 @@ object carga {
 //		30.times({ i => muros.add(new Muro())})
 		level1.renderBlocks()
 		muros.forEach({ e => e.crear()})
+		self.controles()
 		
 	}
 
@@ -28,33 +29,37 @@ object carga {
 		keyboard.left().onPressDo({ tanquesito.cambiarTanque(left)})
 		keyboard.right().onPressDo({ tanquesito.cambiarTanque(right)})
 		keyboard.space().onPressDo({ tanquesito.ataque()})
+		self.disparoEnemigo()
 	}
+
 
 	method disparoEnemigo() {
-		game.onTick(5000, "disparo enemigos", { enemigos.forEach({ t => t.atacar()})})
+		enemigos.forEach({ t => t.activar()})
+		//self.movimientoEnemigo()
 	}
 
-	method movimientoBala() {
+	/*method movimientoBala() {
 		game.onTick(300, "movimiento bala", { balas.forEach({ t => t.realidad()})})
+		self.movimientoEnemigo()
 	}
 
-	method crearBala(objeto) {
+	/*method crearBala(objeto) {
 		balas.add(objeto)
 		objeto.crear()
 		objeto.colisionador()
-	}
+	}*/
 
-	method movimientoEnemigo() {
-		game.onTick(2000, "movimiento enemigos", { enemigos.forEach({ t => t.cambiarTanqueE(t.movimientos().anyOne())})})
-	}
+	//method movimientoEnemigo() {
+	//	game.onTick(2000, "movimiento enemigos", { enemigos.forEach({ t => t.cambiarTanqueE(t.movimientos().anyOne())})})
+	//}
 
 	method eliminarEnemigo(tanqueE) {
 		enemigos.remove(tanqueE)
 	}
 
-	method eliminarBala(bala) {
+	/*method eliminarBala(bala) {
 		balas.remove(bala)
-	}
+	}*/
 
 }
 
