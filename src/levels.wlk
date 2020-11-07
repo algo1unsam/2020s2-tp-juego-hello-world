@@ -10,7 +10,7 @@ object level1 {
 	]
 	
 	method renderBlocks(){
-		bloques.forEach({bloque=>carga.muros().add(new Muro(position=game.at(bloque.head(),bloque.last())))})
+		bloques.forEach({bloque=>carga.muros().add(new Ladrillo(position=game.at(bloque.head(),bloque.last())))})
 	}
 	method renderEnemies() {		
 		carga.enemigos().add(new TanqueEnemigo(position=new Position(x=0,y=10)))

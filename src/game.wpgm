@@ -1,5 +1,6 @@
 import wollok.game.*
 import inicio.*
+import menu.*
 
 program game {
 	// CONFIG	
@@ -8,16 +9,7 @@ program game {
 	game.width(13)
 	game.ground("black.jpg")
 	game.cellSize(50)
-		// CREACION 
-	carga.creacion()
-		// CONTROLES
-	//carga.controles()
-		// DISPAROS
-	//carga.disparoEnemigo()
-		// MOV BALA
-	//carga.movimientoBala()
-		// MOV ENEMIGO
-	//carga.movimientoEnemigo()
-		// start
+	menu.cargar()
+//	carga.creacion()
 	game.start()
 }

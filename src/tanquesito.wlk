@@ -9,7 +9,6 @@ object tanquesito {
 	var property image = "tank_up.png"
 	var ultimaPosicion = position
 	var ultimoMovimiento = up
-	//const property movimientos = [ down, down, up, left, right ]
 
 	method cambiarTanque(apunta) {
 		if (game.getObjectsIn(apunta.mov(self)).isEmpty()) {
