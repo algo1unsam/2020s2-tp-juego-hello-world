@@ -13,7 +13,8 @@ class TanqueEnemigo {
 
 	method atacar() {
 		const bala = new BalaEnemigos(position = ultimaPosicion)
-		bala.disparada(ultimoMovimiento)}
+		bala.disparada(ultimoMovimiento)
+	}
 	
 	method cambiarTanqueE(apunta) {
 		if (game.getObjectsIn(apunta.mov(self)).isEmpty()) {
@@ -31,14 +32,14 @@ class TanqueEnemigo {
 	
 	/// hay ver porq el onTick rompe el juego
 	method activar() {
-		//game.onTick(1000, "disparo enemigo"+self.identity().toString(), { => self.atacar()})
-		game.onTick(2000, "movimiento enemigos" +self.identity().toString(), { => self.cambiarTanqueE(self.movimientos().anyOne())})
+		game.onTick(2000, "movimiento enemigos"+self.identity().toString(), { => self.cambiarTanqueE(self.movimientos().anyOne())})
+		game.onTick(3000, "disparo enemigo"+self.identity().toString(), { => self.atacar()})
 	}
 
 
 	method chocado() {
+		game.removeTickEvent("disparo enemigo"+self.identity().toString())
 		game.removeTickEvent("movimiento enemigos"+self.identity().toString())
-		game.removeTickEvent( "disparo enemigos"+self.identity().toString())
 		game.removeVisual(self)
 		carga.eliminarEnemigo(self)
 	}

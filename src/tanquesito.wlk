@@ -22,7 +22,8 @@ object tanquesito {
 
 	method ataque() {
 		const bala = new Bala(position = ultimaPosicion)
-		bala.disparada(ultimoMovimiento)}
+		bala.disparada(ultimoMovimiento)
+	}
 
 	method chocado() {
 	}

@@ -71,7 +71,7 @@ class BalaEnemigos inherits Bala {
 	override method colisionador() {
 		game.onCollideDo(self, { c =>
 			c.chocadoPorEnemigo()
-				game.removeVisual(self)
+			game.removeVisual(self)
 		})
 		game.onTick(800, "eliminar balaMoviendose"+self.identity().toString(), { =>self.eliminar()})
 	}
