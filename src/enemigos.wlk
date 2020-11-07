@@ -12,9 +12,12 @@ class TanqueEnemigo {
 	const property movimientos = [ down, down, up, left, right ] // el primero no lo toma
 
 	method atacar() {
-		const bala = new BalaEnemigos(position = ultimaPosicion)
-		bala.disparada(ultimoMovimiento)}
-	
+		if (self.randomizer(3) == 2) {
+			const bala = new BalaEnemigos(position = ultimaPosicion)
+			bala.disparada(ultimoMovimiento)
+		}
+	}
+
 	method cambiarTanqueE(apunta) {
 		if (game.getObjectsIn(apunta.mov(self)).isEmpty()) {
 			self.position(apunta.mov(self))
@@ -28,17 +31,7 @@ class TanqueEnemigo {
 		return 0.randomUpTo(valor).roundUp()
 	}
 
-	
-	/// hay ver porq el onTick rompe el juego
-	method activar() {
-		//game.onTick(1000, "disparo enemigo"+self.identity().toString(), { => self.atacar()})
-		game.onTick(2000, "movimiento enemigos" +self.identity().toString(), { => self.cambiarTanqueE(self.movimientos().anyOne())})
-	}
-
-
 	method chocado() {
-		game.removeTickEvent("movimiento enemigos"+self.identity().toString())
-		game.removeTickEvent( "disparo enemigos"+self.identity().toString())
 		game.removeVisual(self)
 		carga.eliminarEnemigo(self)
 	}
@@ -48,6 +41,32 @@ class TanqueEnemigo {
 
 	method crear() {
 		game.addVisual(self)
+	}
+
+}
+
+class TanqueEnemigoAtkSpeed inherits TanqueEnemigo {
+
+	override method atacar() {
+		if (self.randomizer(1) == 1) {
+			const bala = new BalaEnemigos(position = ultimaPosicion)
+			bala.disparada(ultimoMovimiento)
+		}
+	}
+
+}
+
+class TanqueEnemigo3HP inherits TanqueEnemigo {
+
+	var vidas = 3
+
+	override method chocado() {
+		if (vidas == 1) {
+			vidas -= 1
+		} else {
+			game.removeVisual(self)
+			carga.eliminarEnemigo(self)
+		}
 	}
 
 }

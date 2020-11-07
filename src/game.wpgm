@@ -8,16 +8,6 @@ program game {
 	game.width(13)
 	game.ground("black.jpg")
 	game.cellSize(50)
-		// CREACION 
 	carga.creacion()
-		// CONTROLES
-	//carga.controles()
-		// DISPAROS
-	//carga.disparoEnemigo()
-		// MOV BALA
-	//carga.movimientoBala()
-		// MOV ENEMIGO
-	//carga.movimientoEnemigo()
-		// start
 	game.start()
 }
