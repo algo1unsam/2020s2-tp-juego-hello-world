@@ -2,7 +2,8 @@ import wollok.game.*
 import muros.*
 import enemigos.*
 import inicio.*
-
+import menu.*
+import tanquesito.*
 
 object level1 {
 	const bloques=[[1,1],[1,2],[1,3],[1,7],[1,8],[1,9],[2,5],[3,2],[3,3],[3,5],[3,7],[3,8],[3,9],[5,2],[5,3],[5,5],
@@ -39,14 +40,14 @@ object level1 {
 		}
 }
 
-object perdiste{
-	var property = "gameOver.jpg"
+object perdiste {
+	var property image= "gameOver.jpg"
 	var property position = game.at(0,0)
 
 		method gameOver() {
 			game.clear()
 			game.addVisual(self)
-			gay.say(tanquesito, "Tu puntaje "+ tanquesito.puntosAcumulados()) 
+			game.say(tanquesito, "Tu puntaje "+ tanquesito.puntosGanados()) 
 		    keyboard.enter().onPressDo{
 			game.clear()
 			menu.cargar()}
