@@ -34,7 +34,9 @@ object tanquesito {
 
 	method chocadoPorEnemigo() {
 		game.removeVisual(self)
-		perdiste.gameOver()
+		
+		game.schedule(2000,{=> 
+		perdiste.gameOver()})
 	}
 	method sumaPunto(enemigoDerrotado) {
 		puntosAcumulados += enemigoDerrotado.puntos() 		

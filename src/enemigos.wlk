@@ -9,7 +9,7 @@ class TanqueEnemigo {
 
 	var property position
 	var property image = "enemy_up.png"
-	var property ultimoMovimiento = up
+	var property ultimoMovimiento = down
 	var ultimaPosicion = position
 	const property movimientos = [ down, down, up, left, right ] // el primero no lo toma
 
@@ -37,6 +37,7 @@ class TanqueEnemigo {
 
 
 	method activar() {
+		//game.addVisual(self)
 		game.onTick(2000, "movimiento enemigos"+self.identity().toString(), { => self.cambiarTanqueE(self.movimientos().anyOne())})
 		game.onTick(3000, "disparo Enemigo"+self.identity().toString(), { => self.atacar()})
 	}
@@ -49,16 +50,16 @@ class TanqueEnemigo {
 		game.removeTickEvent("disparo Enemigo"+self.identity().toString())
 		game.removeTickEvent("movimiento enemigos"+self.identity().toString())
 		game.removeVisual(self)
-		carga.eliminarEnemigo(self)
+		//carga.eliminarEnemigo(self)
 		tanquesito.sumaPunto(self)
 	}
 
 	method chocadoPorEnemigo() {
 	}
 
-	method crear() {
+	/*method crear() {
 		game.addVisual(self)
-	}
+	}*/
 
 }
 

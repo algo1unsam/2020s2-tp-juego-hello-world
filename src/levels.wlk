@@ -17,24 +17,27 @@ object level1 {
 	}
 	
 	method renderEnemies() {
-		/*const tanqueE1=	new TanqueEnemigo(position=new Position(x=0,y=10))	
-		const tanqueE2= new TanqueEnemigo(position=new Position(x=12,y=10))
-		const tanqueE3= new TanqueEnemigo(position=new Position(x=6,y=10))
 		
-		carga.enemigos().add(tanqueE1)
-		tanqueE1.crear()
-		carga.enemigos().add(tanqueE2)
-		tanqueE2.crear()
-		carga.enemigos().add(tanqueE3)
-		tanqueE3.crear()
+		const posicionesIniciales = [game.at(0,10),game.at(12,10),game.at(6,10)]
+		var tanqueEnemigos
+		
+		const tipoEnemigo = [{tanqueEnemigos=new TanqueEnemigo(position=posicionesIniciales.anyOne())},
+		{tanqueEnemigos= new TanqueEnemigoAtkSpeed(position=posicionesIniciales.anyOne())},
+		{tanqueEnemigos= new TanqueEnemigo3HP(position=posicionesIniciales.anyOne())}]
+		
 		//carga.enemigos().add(new TanqueEnemigo(position=new Position(x=12,y=10)))
 		//carga.enemigos().add(new TanqueEnemigo(position=new Position(x=6,y=10)))
-		game.schedule(10000, {=>	carga.enemigos().add(tanqueE1)
-		tanqueE1.crear()})*/
+		//game.schedule(10000, {=>	carga.enemigos().add(tanqueE1)
+		//tanqueE1.crear()})
+		
+		game.onTick(13000, "generacio Enemigos",{=> tipoEnemigo.anyOne().apply()
+			game.addVisual(tanqueEnemigos)
+			tanqueEnemigos.activar()
+		})
 
-		carga.enemigos().add(new TanqueEnemigo(position=new Position(x=0,y=10)))
+		/*carga.enemigos().add(new TanqueEnemigo(position=new Position(x=0,y=10)))
 		carga.enemigos().add(new TanqueEnemigo(position=new Position(x=12,y=10)))
-		carga.enemigos().add(new TanqueEnemigo(position=new Position(x=6,y=10)))
+		carga.enemigos().add(new TanqueEnemigo(position=new Position(x=6,y=10)))*/
 		
 		
 		}
@@ -47,6 +50,7 @@ object perdiste {
 		method gameOver() {
 			game.clear()
 			game.addVisual(self)
+			game.addVisual(tanquesito)
 			game.say(tanquesito, "Tu puntaje "+ tanquesito.puntosGanados()) 
 		    keyboard.enter().onPressDo{
 			game.clear()
