@@ -47,5 +47,6 @@ object carga {
 		enemigos.remove(tanqueE)
 	}
 
+
 }
 

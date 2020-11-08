@@ -1,6 +1,7 @@
 import wollok.game.*
 import movimientos.*
 import inicio.*
+import levels.*
 import balas.*
 import enemigos.*
 
@@ -10,6 +11,7 @@ object tanquesito {
 	var property image = "tank_up.png"
 	var ultimaPosicion = position
 	var ultimoMovimiento = up
+	var puntosAcumulados = 0
 
 	method cambiarTanque(apunta) {
 		if (game.getObjectsIn(apunta.mov(self)).isEmpty()) {
@@ -27,9 +29,15 @@ object tanquesito {
 
 	method chocado() {
 	}
+	
+	method puntosGanados()= puntosAcumulados
 
 	method chocadoPorEnemigo() {
 		game.removeVisual(self)
+		//perdiste.gameOver()
+	}
+	method sumaPunto(enemigoDerrotado) {
+		puntosAcumulados += enemigoDerrotado.puntos() 		
 	}
 
 }
