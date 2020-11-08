@@ -2,6 +2,7 @@ import wollok.game.*
 import movimientos.*
 import inicio.*
 import balas.*
+import enemigos.*
 
 object tanquesito {
 

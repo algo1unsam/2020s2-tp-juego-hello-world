@@ -26,8 +26,9 @@ class Bala {
 		game.onCollideDo(self, { c =>
 			c.chocado()
 			game.removeVisual(self)
+			game.removeTickEvent("balaMoviendose" + self.identity().toString())
 		})
-		game.onTick(800, "eliminar balaMoviendose" + self.identity().toString(), { => self.eliminar()})
+		//game.onTick(800, "eliminar balaMoviendose" + self.identity().toString(), { => self.eliminar()})
 	}
 
 	method eliminar() {
@@ -51,8 +52,9 @@ class BalaEnemigos inherits Bala {
 		game.onCollideDo(self, { c =>
 			c.chocadoPorEnemigo()
 			game.removeVisual(self)
+			game.removeTickEvent("balaMoviendose" + self.identity().toString())
 		})
-		game.onTick(800, "eliminar balaMoviendose" + self.identity().toString(), { => self.eliminar()})
+		//game.onTick(800, "eliminar balaMoviendose" + self.identity().toString(), { => self.eliminar()})
 	}
 
 }

@@ -2,6 +2,8 @@ import wollok.game.*
 import movimientos.*
 import inicio.*
 import balas.*
+import tanquesito.*
+
 
 class TanqueEnemigo {
 
@@ -36,7 +38,7 @@ class TanqueEnemigo {
 	/// hay ver porq el onTick rompe el juego
 	method activar() {
 		game.onTick(2000, "movimiento enemigos"+self.identity().toString(), { => self.cambiarTanqueE(self.movimientos().anyOne())})
-		game.onTick(3000, "disparo enemigo"+self.identity().toString(), { => self.atacar()})
+		game.onTick(3000, "disparo Enemigo"+self.identity().toString(), { => self.atacar()})
 	}
 
 
@@ -44,7 +46,7 @@ class TanqueEnemigo {
 
 	method chocado() {
 
-		game.removeTickEvent("disparo enemigo"+self.identity().toString())
+		game.removeTickEvent("disparo Enemigo"+self.identity().toString())
 		game.removeTickEvent("movimiento enemigos"+self.identity().toString())
 		game.removeVisual(self)
 		carga.eliminarEnemigo(self)
@@ -75,12 +77,9 @@ class TanqueEnemigo3HP inherits TanqueEnemigo {
 	var vidas = 3
 
 	override method chocado() {
-		if (vidas == 1) {
+		if (not vidas == 1) {
 			vidas -= 1
-		} else {
-			game.removeVisual(self)
-			carga.eliminarEnemigo(self)
-		}
+		} else {super()}
 	}
 
 }

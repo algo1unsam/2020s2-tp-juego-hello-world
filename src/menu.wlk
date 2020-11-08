@@ -12,5 +12,6 @@ object menu {
 			game.removeVisual(self)
 			carga.creacion()
 		})
+	keyboard.backspace().onPressDo { game.stop() }
 	}
 }
