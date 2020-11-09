@@ -4,7 +4,6 @@ import movimientos.*
 class Muro {
 
 	var property position
-	const property movimientos = [ down, down, up, left, right ]
 
 	method chocado() {
 	}
@@ -47,7 +46,7 @@ class Cemento inherits Muro { //no se rompe
 class Piedra inherits Muro { //se rompe con 3 hits
 
 	var vidas = 3
-	var property image = "piedra.jpg"
+	var property image = "piedra.png"
 
 	override method chocado() {
 		if (vidas == 0) {

@@ -29,17 +29,16 @@ object tanquesito {
 
 	method chocado() {
 	}
-	
-	method puntosGanados()= puntosAcumulados
+
+	method puntosGanados() = puntosAcumulados
 
 	method chocadoPorEnemigo() {
 		game.removeVisual(self)
-		
-		game.schedule(2000,{=> 
-		perdiste.gameOver()})
+		game.schedule(1500, {=> perdiste.gameOver("gameOver1.jpg")})
 	}
+
 	method sumaPunto(enemigoDerrotado) {
-		puntosAcumulados += enemigoDerrotado.puntos() 		
+		puntosAcumulados += enemigoDerrotado.puntos()
 	}
 
 }

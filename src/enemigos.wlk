@@ -3,7 +3,7 @@ import movimientos.*
 import inicio.*
 import balas.*
 import tanquesito.*
-
+import levels.*
 
 class TanqueEnemigo {
 
@@ -19,8 +19,8 @@ class TanqueEnemigo {
 			bala.disparada(ultimoMovimiento)
 		}
 	}
-	
-	method puntos()=100
+
+	method puntos() = 100
 
 	method cambiarTanqueE(apunta) {
 		if (game.getObjectsIn(apunta.mov(self)).isEmpty()) {
@@ -35,32 +35,26 @@ class TanqueEnemigo {
 		return 0.randomUpTo(valor).roundUp()
 	}
 
-
 	method activar() {
-		//game.addVisual(self)
-		game.onTick(2000, "movimiento enemigos"+self.identity().toString(), { => self.cambiarTanqueE(self.movimientos().anyOne())})
-		game.onTick(3000, "disparo Enemigo"+self.identity().toString(), { => self.atacar()})
+		// game.addVisual(self)
+		game.onTick(1500, "movimiento enemigos" + self.identity().toString(), { => self.cambiarTanqueE(self.movimientos().anyOne())})
+		game.onTick(3000, "disparo Enemigo" + self.identity().toString(), { => self.atacar()})
 	}
 
-
-
-
 	method chocado() {
-
-		game.removeTickEvent("disparo Enemigo"+self.identity().toString())
-		game.removeTickEvent("movimiento enemigos"+self.identity().toString())
+		game.removeTickEvent("disparo Enemigo" + self.identity().toString())
+		game.removeTickEvent("movimiento enemigos" + self.identity().toString())
 		game.removeVisual(self)
-		//carga.eliminarEnemigo(self)
+		level1.eliminarEnemigo(self)
 		tanquesito.sumaPunto(self)
 	}
 
 	method chocadoPorEnemigo() {
 	}
 
-	/*method crear() {
-		game.addVisual(self)
-	}*/
-
+/*method crear() {
+ * 	game.addVisual(self)
+ }*/
 }
 
 class TanqueEnemigoAtkSpeed inherits TanqueEnemigo {
@@ -71,8 +65,8 @@ class TanqueEnemigoAtkSpeed inherits TanqueEnemigo {
 			bala.disparada(ultimoMovimiento)
 		}
 	}
-	
-	override method puntos()=300
+
+	override method puntos() = 300
 
 }
 
@@ -81,12 +75,14 @@ class TanqueEnemigo3HP inherits TanqueEnemigo {
 	var vidas = 3
 
 	override method chocado() {
-		if (not vidas == 1) {
+		if (vidas == 1) {
+			super()
+		} else {
 			vidas -= 1
-		} else {super()}
+		}
 	}
-	
-	override method puntos()=500
+
+	override method puntos() = 500
 
 }
 
