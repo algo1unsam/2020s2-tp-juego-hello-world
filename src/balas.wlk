@@ -26,27 +26,21 @@ class Bala {
 		game.onCollideDo(self, { c =>
 			c.chocado()
 			if (game.hasVisual(self)) {
-				// game.removeVisual(self)
 				self.eliminar()
 			}
-		// game.removeTickEvent("balaMoviendose" + self.identity().toString())
 		})
-	// game.onTick(800, "eliminar balaMoviendose" + self.identity().toString(), { => self.eliminar()})
 	}
 
 	method eliminar() {
 		game.removeTickEvent("balaMoviendose" + self.identity().toString())
-			// game.removeTickEvent("eliminar balaMoviendose" + self.identity().toString())
 		game.removeVisual(self)
 	}
 
 	// Si las balas chocan ya se eliminan solas
 	method chocado() {
-	// game.removeVisual(self)
 	}
 
 	method chocadoPorEnemigo() {
-	// game.removeVisual(self)
 	}
 
 }
@@ -57,12 +51,9 @@ class BalaEnemigos inherits Bala {
 		game.onCollideDo(self, { c =>
 			c.chocadoPorEnemigo()
 			if (game.hasVisual(self)) {
-				// game.removeVisual(self)
 				self.eliminar()
 			}
-		// game.removeTickEvent("balaMoviendose" + self.identity().toString())
 		})
-	// game.onTick(800, "eliminar balaMoviendose" + self.identity().toString(), { => self.eliminar()})
 	}
 
 }

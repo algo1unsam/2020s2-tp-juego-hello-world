@@ -10,6 +10,5 @@ program game {
 	game.ground("black.jpg")
 	game.cellSize(50)
 	menu.cargar()
-//	carga.creacion()
 	game.start()
 }

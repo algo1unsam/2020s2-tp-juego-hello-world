@@ -11,16 +11,14 @@ object carga {
 	const property muros = []
 
 	method creacion() {
+		game.clear()
+		keyboard.backspace().onPressDo({ game.stop()})
 		game.addVisual(tanquesito)
 		level1.renderEnemies()
-			// enemigos.forEach({ e => e.crear()})
 		level1.renderBlocks()
 		muros.forEach({ m => m.crear()})
 		level1.renderNewBlocks()
 		self.controles()
-	// self.movimientoEnemigo()
-	// self.disparoEnemigo()
-	// self.movimientos()
 	}
 
 	method controles() {
@@ -31,19 +29,5 @@ object carga {
 		keyboard.space().onPressDo({ tanquesito.ataque()})
 	}
 
-/*method disparoEnemigo() {
- * 	game.onTick(2000, "disparo enemigos", { enemigos.forEach({ t => t.atacar()})})
- * }
- * 
- * method movimientos(){
- * 	enemigos.forEach({t => t.activar()})
- * }
-
- * /*method movimientoEnemigo() {
- * 	game.onTick(2000, "movimiento enemigos", { enemigos.forEach({ t => t.cambiarTanqueE(t.movimientos().anyOne())})})
- }*/
-/*method eliminarEnemigo(tanqueE) {
- * 	enemigos.remove(tanqueE)
- }*/
 }
 

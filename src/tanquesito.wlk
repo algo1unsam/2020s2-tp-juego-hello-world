@@ -18,7 +18,8 @@ object tanquesito {
 			self.position(apunta.mov(self))
 		}
 		image = "tank_" + apunta.movString() + ".png"
-		ultimaPosicion = apunta.mov(self)
+			// ultimaPosicion = apunta.mov(self)
+		ultimaPosicion = position
 		ultimoMovimiento = apunta
 	}
 

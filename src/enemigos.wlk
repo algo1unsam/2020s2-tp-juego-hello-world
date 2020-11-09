@@ -37,7 +37,6 @@ class TanqueEnemigo {
 	}
 
 	method activar() {
-		// game.addVisual(self)
 		game.onTick(1500, "movimiento enemigos" + self.identity().toString(), { => self.cambiarTanqueE(self.movimientos().anyOne())})
 		game.onTick(3000, "disparo Enemigo" + self.identity().toString(), { => self.atacar()})
 	}
@@ -54,9 +53,6 @@ class TanqueEnemigo {
 	method chocadoPorEnemigo() {
 	}
 
-/*method crear() {
- * 	game.addVisual(self)
- }*/
 }
 
 class TanqueEnemigoAtkSpeed inherits TanqueEnemigo {
