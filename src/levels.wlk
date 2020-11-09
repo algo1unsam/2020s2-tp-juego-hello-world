@@ -28,7 +28,7 @@ object level1 {
 	method renderEnemies() {
 		const posicionesIniciales = [ game.at(0,10), game.at(12,10), game.at(6,10) ]
 		var tanqueEnemigos
-		const tipoEnemigo = [ {tanqueEnemigos=new TanqueEnemigo(position=posicionesIniciales.anyOne())}, {tanqueEnemigos= new TanqueEnemigoAtkSpeed(position=posicionesIniciales.anyOne())}, {tanqueEnemigos= new TanqueEnemigo3HP(position=posicionesIniciales.anyOne())} ]
+		const tipoEnemigo = [ {tanqueEnemigos=new TanqueEnemigo(position=posicionesIniciales.anyOne())}, {tanqueEnemigos= new TanqueEnemigoAtkSpeed(position=posicionesIniciales.anyOne(), image = "enemy2_up.png")}, {tanqueEnemigos= new TanqueEnemigo3HP(position=posicionesIniciales.anyOne(), image = "enemy3_up.png")} ]
 			// carga.enemigos().add(new TanqueEnemigo(position=new Position(x=12,y=10)))
 			// carga.enemigos().add(new TanqueEnemigo(position=new Position(x=6,y=10)))
 			// game.schedule(10000, {=>	carga.enemigos().add(tanqueE1)

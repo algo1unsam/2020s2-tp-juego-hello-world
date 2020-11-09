@@ -68,6 +68,15 @@ class TanqueEnemigoAtkSpeed inherits TanqueEnemigo {
 		}
 	}
 
+	override method cambiarTanqueE(apunta) {
+		if (game.getObjectsIn(apunta.mov(self)).isEmpty()) {
+			self.position(apunta.mov(self))
+		}
+		image = "enemy2_" + apunta.movString() + ".png"
+		ultimaPosicion = apunta.mov(self)
+		ultimoMovimiento = apunta
+	}
+
 	override method puntos() = 300
 
 }
@@ -82,6 +91,15 @@ class TanqueEnemigo3HP inherits TanqueEnemigo {
 		} else {
 			vidas -= 1
 		}
+	}
+
+	override method cambiarTanqueE(apunta) {
+		if (game.getObjectsIn(apunta.mov(self)).isEmpty()) {
+			self.position(apunta.mov(self))
+		}
+		image = "enemy3_" + apunta.movString() + ".png"
+		ultimaPosicion = apunta.mov(self)
+		ultimoMovimiento = apunta
 	}
 
 	override method puntos() = 500
