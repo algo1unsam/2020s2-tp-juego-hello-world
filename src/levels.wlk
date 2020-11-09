@@ -66,6 +66,7 @@ object perdiste {
 	var property position = game.at(0, 0)
 
 	method gameOver(imagen) {
+		game.sound("gameover.wav").play()
 		game.clear()
 		self.image(imagen)
 		level1.enemigos().clear()

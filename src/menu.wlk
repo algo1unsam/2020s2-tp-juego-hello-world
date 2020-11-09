@@ -9,6 +9,7 @@ object menu {
 	}
 	method empezar(){
 		keyboard.enter().onPressDo({
+			game.sound("begin.wav").play()
 			game.removeVisual(self)
 			carga.creacion()
 		})

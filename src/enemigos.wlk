@@ -15,6 +15,7 @@ class TanqueEnemigo {
 
 	method atacar() {
 		if (self.randomizer(3) == 2) {
+			game.sound("shoot.wav").play()
 			const bala = new BalaEnemigos(position = ultimaPosicion)
 			bala.disparada(ultimoMovimiento)
 		}
@@ -42,6 +43,7 @@ class TanqueEnemigo {
 	}
 
 	method chocado() {
+		game.sound("kill.wav").play()
 		game.removeTickEvent("disparo Enemigo" + self.identity().toString())
 		game.removeTickEvent("movimiento enemigos" + self.identity().toString())
 		game.removeVisual(self)

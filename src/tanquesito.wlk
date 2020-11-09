@@ -23,6 +23,7 @@ object tanquesito {
 	}
 
 	method ataque() {
+		game.sound("shoot.wav").play()
 		const bala = new Bala(position = ultimaPosicion)
 		bala.disparada(ultimoMovimiento)
 	}
@@ -33,6 +34,7 @@ object tanquesito {
 	method puntosGanados() = puntosAcumulados
 
 	method chocadoPorEnemigo() {
+		game.sound("death.wav").play()
 		game.removeVisual(self)
 		game.schedule(1500, {=> perdiste.gameOver("gameOver1.jpg")})
 	}
