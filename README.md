@@ -1,3 +1,7 @@
-# Nuevo proyecto
-Inserte la descripción de su proyecto aquí
-hello
+# BATTLE CITY 
+
+## Instrucciones
+enemy_up.png
+tank_up.png
+
+<img src="assets/tank_up.png" width="50px" />
